@@ -6,6 +6,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/normalize.css">
+    <script>
+      var newRoom = {};
+      var newRoomC = function() {
+        newRoom = { $value: "Room 4", $id: "room4" };
+        console.log(newRoom);
+      };
+      newRoomC();
+    </script>
 </head>
 <body>
     <ui-view></ui-view>
@@ -17,6 +25,9 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- AngularUI Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
     <script>
       // Initialize Firebase
       var config = {

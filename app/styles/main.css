@@ -2,24 +2,33 @@ body {
   font-family: 'Roboto';
 }
 
-h1 {
+.listheader {
+  display: inline-block;
   color: #444;
 }
 
+.newroom {
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  height: 2em;
+  background-color: #ADF;
+}
+
 .column {
-    float: left;
-    padding-left: 2rem;
+  float: left;
+  padding-left: 2rem;
 }
 
 .left {
-    width: 25%;
-    height: 100vh;
-    background-color: #EEE;
+  width: 25%;
+  height: 100vh;
+  background-color: #EEE;
 }
 
 .right {
-    width: 75%;
-    height: 100vh;
+  width: 75%;
+  height: 100vh;
 }
 
 .roomname {

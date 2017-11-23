@@ -1,6 +1,8 @@
 <div class="column left">
 
-<h1>Bloc Chat</h1>
+<h1 class="listheader">Bloc Chat</h1>
+
+<button class="newroom" ng-click="rooms.add('Room 4')">New Room</button>
 
 <p class="roomname" ng-repeat="room in rooms.all">
     {{ room.$value }}

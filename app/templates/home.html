@@ -1,14 +1,14 @@
-<div class="column left">
+<main class="container-fluid" ng-app="blocChat">
+  <div class="row">
+    <section class="col-sm-3 roomlist">
+      <h1 class="listheader">Bloc Chat</h1>
+      <button class="btn newroom" ng-click="home.open()">New Room</button>
+      <p class="roomname" ng-repeat="room in rooms.all">
+          {{ room.$value }}
+      </p>
+    </section>
+    <section class="col-sm-9 chatwindow">
 
-<h1 class="listheader">Bloc Chat</h1>
-
-<button class="newroom" ng-click="rooms.add('Room 4')">New Room</button>
-
-<p class="roomname" ng-repeat="room in rooms.all">
-    {{ room.$value }}
-</p>
-
-</div>
-
-<div class="column right">
-</div>
+    </section>
+  </div>
+</main>

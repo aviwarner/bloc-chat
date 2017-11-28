@@ -2,6 +2,10 @@ body {
   font-family: 'Roboto';
 }
 
+.full {
+  width: 100%;
+}
+
 .listheader {
   display: inline-block;
   color: #444;
@@ -11,27 +15,21 @@ body {
   margin-left: 10px;
   display: inline-block;
   vertical-align: text-bottom;
-  height: 2em;
-  background-color: #ADF;
 }
 
-.column {
-  float: left;
-  padding-left: 2rem;
-}
-
-.left {
-  width: 25%;
+.roomlist {
   height: 100vh;
   background-color: #EEE;
+  padding: 1rem 0rem 0rem 2rem;
 }
 
-.right {
-  width: 75%;
+.chatwindow {
   height: 100vh;
+  background-color: #fafafa;
+  padding: 1rem;
 }
 
 .roomname {
-  font-size: 1.25rem;
+  font-size: 2rem;
   color: #777;
 }

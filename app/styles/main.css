@@ -33,3 +33,19 @@ body {
   font-size: 2rem;
   color: #777;
 }
+
+.roomname:hover {
+  cursor: pointer;
+}
+
+.message {
+  width: 80%;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.sent-at {
+  font-style: italic;
+}

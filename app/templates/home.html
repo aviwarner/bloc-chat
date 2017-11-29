@@ -2,13 +2,29 @@
   <div class="row">
     <section class="col-sm-3 roomlist">
       <h1 class="listheader">Bloc Chat</h1>
-      <button class="btn newroom" ng-click="home.open()">New Room</button>
-      <p class="roomname" ng-repeat="room in rooms.all">
+      <button class="btn newroom" ng-click="home.openModal()">New Room</button>
+      <p class="roomname" ng-repeat="room in rooms.all" ng-click="home.setRoom(room); messages.getByRoomId(room.$id)">
           {{ room.$value }}
       </p>
     </section>
     <section class="col-sm-9 chatwindow">
-
+      <h2 ng-show="!currentRoom"><em>Select a room!!</em></h2>
+      <h2>{{ currentRoom.$value }}</h2>
+      <table class="table table-striped" ng-show="currentRoom">
+        <tbody>
+          <tr ng-repeat="message in messages.all">
+            <td class="message">
+              <p class="username">
+                {{ message.username }}
+              </p>
+              <p class="content">
+                {{ message.content }}
+              </p>
+            </td>
+            <td class="sent-at text-right">{{ message.sentAt }}</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
 </main>

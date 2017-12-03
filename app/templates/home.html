@@ -21,10 +21,19 @@
                 {{ message.content }}
               </p>
             </td>
-            <td class="sent-at text-right">{{ message.sentAt }}</td>
+            <td class="sent-at text-right">{{ message.sentAt | date:"h:mm a"}}</td>
           </tr>
         </tbody>
       </table>
+      <div class="row message-write" ng-show="currentRoom">
+        <div class="col-lg-12">
+          <form class="input-group input-group-lg" name="form.messageSubmit" ng-submit="home.sendMessage()">
+            <input type="text" class="form-control" ng-model="message.content" placeholder="Write your message here..." autofocus required>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Submit</button>
+            </span>
+          </form>
+        </div>
     </section>
   </div>
 </main>

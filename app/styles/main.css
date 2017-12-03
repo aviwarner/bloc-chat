@@ -21,12 +21,14 @@ body {
   height: 100vh;
   background-color: #EEE;
   padding: 1rem 0rem 0rem 2rem;
+  overflow-y: scroll;
 }
 
 .chatwindow {
   height: 100vh;
   background-color: #fafafa;
   padding: 1rem;
+  overflow-y: scroll;
 }
 
 .roomname {
@@ -48,4 +50,9 @@ body {
 
 .sent-at {
   font-style: italic;
+}
+
+.message-write {
+  position: fixed;
+  bottom: 0px;
 }

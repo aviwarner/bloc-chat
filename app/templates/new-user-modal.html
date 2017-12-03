@@ -2,12 +2,12 @@
   <p>
     Pick a username:
   </p>
-  <form>
+  <form ng-submit="ok()">
     <div class="input-group">
       <input type="text" class="form-control" ng-model="username" placeholder="Name" autofocus required>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" type="submit" ng-click="ok()">OK</button>
+      <button class="btn btn-primary" type="submit">OK</button>
     </div>
   </form>
 </div>

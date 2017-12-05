@@ -1,23 +1,27 @@
 (function() {
   function HomeCtrl($uibModal, $scope, $cookies, Room, Message) {
-    $scope.rooms = Room;
-    $scope.currentRoom = null;
+    this.rooms = Room;
+    this.currentRoom = null;
+    this.currentUser = $cookies.get('blocChatCurrentUser');
 
     this.setRoom = function(room) {
-      $scope.currentRoom = room;
+      this.currentRoom = room;
     }
 
-    $scope.messages = Message;
+    this.messages = Message;
 
-    $scope.form = {};
+    this.form = {};
 
     this.sendMessage = function() {
-      $scope.message.roomId = $scope.currentRoom.$id;
-      $scope.message.username = $cookies.get('blocChatCurrentUser');
-      $scope.message.sentAt = Date.now();
-      Message.send($scope.message);
-      $scope.form.messageSubmit.$setPristine();
-      $scope.message.content = '';
+      this.message.roomId = this.currentRoom.$id;
+      this.message.username = $cookies.get('blocChatCurrentUser');
+      this.message.sentAt = Date.now();
+      Message.send(this.message);
+      this.message.content = '';
+    }
+
+    this.activeTyping = function() {
+      Room.activeTyping(this.currentRoom, this.currentUser);
     }
 
     this.openModal = function() {

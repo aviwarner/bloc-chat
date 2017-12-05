@@ -3,16 +3,17 @@
     <section class="col-sm-3 roomlist">
       <h1 class="listheader">Bloc Chat</h1>
       <button class="btn newroom" ng-click="home.openModal()">New Room</button>
-      <p class="roomname" ng-repeat="room in rooms.all" ng-click="home.setRoom(room); messages.getByRoomId(room.$id)">
-          {{ room.$value }}
-      </p>
+      <h3 class="roomname" ng-repeat="room in home.rooms.all" ng-click="home.setRoom(room); home.messages.getByRoomId(room.$id)">
+          {{ room.roomName }}
+      </h3>
     </section>
     <section class="col-sm-9 chatwindow">
-      <h2 ng-show="!currentRoom"><em>Select a room!!</em></h2>
-      <h2>{{ currentRoom.$value }}</h2>
-      <table class="table table-striped" ng-show="currentRoom">
+      <h2 ng-show="!home.currentRoom"><em>Select a room!!</em></h2>
+      <h2 class="listheader">{{ home.currentRoom.roomName }}</h2>
+      <button class="btn btn-danger btn-sm clearroom" ng-click="" ng-show="currentRoom">Clear Chat</button>
+      <table class="table table-striped" ng-show="home.currentRoom">
         <tbody>
-          <tr ng-repeat="message in messages.all">
+          <tr ng-repeat="message in home.messages.all">
             <td class="message">
               <p class="username">
                 {{ message.username }}
@@ -23,12 +24,21 @@
             </td>
             <td class="sent-at text-right">{{ message.sentAt | date:"h:mm a"}}</td>
           </tr>
+          <tr ng-show="home.currentRoom.activeTyping">
+            <td class="activetyping">
+              <p>
+                <em>{{ home.currentRoom.typingUser }} is typing...</em>
+              </p>
+            </td>
+            <td>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <div class="row message-write" ng-show="currentRoom">
+      <div class="row message-write" ng-show="home.currentRoom">
         <div class="col-lg-12">
           <form class="input-group input-group-lg" name="form.messageSubmit" ng-submit="home.sendMessage()">
-            <input type="text" class="form-control" ng-model="message.content" placeholder="Write your message here..." autofocus required>
+            <input type="text" class="form-control" ng-model="home.message.content" ng-keypress="home.activeTyping()" placeholder="Write your message here..." autofocus required>
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">Submit</button>
             </span>

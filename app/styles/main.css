@@ -17,6 +17,13 @@ body {
   vertical-align: text-bottom;
 }
 
+.clearroom {
+  margin-left: 10px;
+  display: inline-block;
+  float: right;
+  vertical-align: text-bottom;
+}
+
 .roomlist {
   height: 100vh;
   background-color: #EEE;
@@ -55,4 +62,8 @@ body {
 .message-write {
   position: fixed;
   bottom: 0px;
+}
+
+.activetyping {
+  color: #777;
 }

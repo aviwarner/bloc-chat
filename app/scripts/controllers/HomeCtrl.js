@@ -33,6 +33,15 @@
       });
     }
 
+    this.loginModal = function() {
+      var modal = $uibModal.open({
+        templateUrl: '/templates/login-modal.html',
+        controller: 'AuthCtrl',
+        size: 'sm',
+        animation: false
+      });
+    }
+
   }
 
   angular

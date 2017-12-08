@@ -6,6 +6,7 @@
       <h3 class="roomname" ng-repeat="room in home.rooms.all" ng-click="home.setRoom(room); home.messages.getByRoomId(room.$id)">
           {{ room.roomName }}
       </h3>
+      <button class="btn newroom" ng-click="home.loginModal()">Log-in!</button>
     </section>
     <section class="col-sm-9 chatwindow">
       <h2 ng-show="!home.currentRoom"><em>Select a room!!</em></h2>

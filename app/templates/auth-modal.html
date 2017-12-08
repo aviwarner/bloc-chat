@@ -1,0 +1,18 @@
+<div class="modal-body">
+  <p>
+    Pick a username and password:
+  </p>
+  <form ng-submit="createUser(email, password)">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="email" placeholder="Email" autofocus required>
+      <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
+    </div>
+    <div class="error-message" ng-show="error">
+      {{ error }}
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="submit">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

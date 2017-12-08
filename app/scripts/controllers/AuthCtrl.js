@@ -1,11 +1,11 @@
 (function() {
-  function AuthCtrl($scope, $firebaseAuth, $uibModalInstance, $uibModal, $cookies) {
+  function AuthCtrl($scope, $rootScope, $firebaseAuth, $uibModalInstance, $uibModal, $cookies) {
     var ref = firebase.database().ref().child("users");
     var currentUser = {};
-    $scope.authObj = $firebaseAuth();
+    $rootScope.authObj = $firebaseAuth();
 
     $scope.createUser = function(email, password) {
-      $scope.authObj.$createUserWithEmailAndPassword(email, password)
+      $rootScope.authObj.$createUserWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("User " + firebaseUser.uid + " created successfully!");
             $scope.login(email, password);
@@ -16,7 +16,7 @@
     }
 
     $scope.login = function(email, password) {
-      $scope.authObj.$signInWithEmailAndPassword(email, password)
+      $rootScope.authObj.$signInWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("Signed in as: " + firebaseUser.uid);
             currentUser.uid = firebaseUser.uid;
@@ -26,6 +26,10 @@
           }).catch(function(error) {
             $scope.error = error.message;
           });
+    }
+
+    $scope.logout = function() {
+      console.log('log out attempt');
     }
 
     $scope.cancel = function() {
@@ -46,5 +50,5 @@
 
   angular
     .module('blocChat')
-    .controller('AuthCtrl', ['$scope', '$firebaseAuth', '$uibModalInstance', '$uibModal', '$cookies', AuthCtrl]);
+    .controller('AuthCtrl', ['$scope', '$rootScope','$firebaseAuth', '$uibModalInstance', '$uibModal', '$cookies', AuthCtrl]);
 })();

@@ -43,6 +43,11 @@
       });
     }
 
+    this.signOut = function() {
+      Auth.authObj.$signOut();
+      console.log(Auth.authObj.$getAuth());
+    }
+
   }
 
   angular

@@ -7,7 +7,7 @@
           {{ room.roomName }}
       </h3>
       <button class="btn btn-info newroom" ng-click="home.loginModal()">Log-in!</button>
-      <button class="btn btn-warning newroom" ng-click="authObj.$signOut()">Log-out</button>
+      <button class="btn btn-warning newroom" ng-click="home.signOut()">Log-out</button>
     </section>
     <section class="col-sm-9 chatwindow">
       <h2 ng-show="!home.currentRoom"><em>Select a room!!</em></h2>

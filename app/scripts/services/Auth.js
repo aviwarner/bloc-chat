@@ -17,7 +17,7 @@
     }
 
     Auth.login = function(email, password) {
-      console.log('email is ' + email);
+      Auth.error = '';
       Auth.authObj.$signInWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("Signed in as: " + firebaseUser.uid);

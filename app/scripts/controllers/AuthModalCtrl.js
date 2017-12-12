@@ -2,17 +2,19 @@
   function AuthModalCtrl($uibModalInstance, $uibModal, $scope, $cookies, Auth) {
 
     this.authService = Auth;
+    this.signedInUser = this.authService.authObj.$getAuth();
 
     this.cancel = function() {
       $uibModalInstance.dismiss('Cancel');
     }
 
     this.login = function(email, password) {
-      this.authService.login(email, password);
-      console.log($cookies.get('blocChatCurrentUser'));
-      // if (!this.authService.error) {
-      //   $uibModalInstance.close('logged in');
-      // }
+      Auth.login(email, password);
+      setTimeout(function() {
+        if (Auth.error === "") {
+          $uibModalInstance.close('Closed it!')
+        }
+      }, 1000);
     }
 
     this.ok = function() {

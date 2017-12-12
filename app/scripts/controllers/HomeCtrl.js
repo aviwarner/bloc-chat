@@ -1,5 +1,5 @@
 (function() {
-  function HomeCtrl($uibModal, $scope, $cookies, Room, Message) {
+  function HomeCtrl($uibModal, $scope, $cookies, Room, Message, Auth) {
     this.rooms = Room;
     this.currentRoom = null;
     this.currentUser = $cookies.get('blocChatCurrentUser');
@@ -24,10 +24,10 @@
       Room.activeTyping(this.currentRoom, this.currentUser);
     }
 
-    this.openModal = function() {
+    this.newRoom = function() {
       var modal = $uibModal.open({
-        templateUrl: '/templates/modal.html',
-        controller: 'ModalCtrl',
+        templateUrl: '/templates/new-room-modal.html',
+        controller: 'RoomModalCtrl',
         size: 'sm',
         animation: false
       });
@@ -36,7 +36,8 @@
     this.loginModal = function() {
       var modal = $uibModal.open({
         templateUrl: '/templates/login-modal.html',
-        controller: 'AuthCtrl',
+        controller: 'AuthModalCtrl',
+        controllerAs: 'auth',
         size: 'sm',
         animation: false
       });
@@ -46,5 +47,5 @@
 
   angular
     .module('blocChat')
-    .controller('HomeCtrl', ['$uibModal', '$scope', '$cookies', 'Room', 'Message', HomeCtrl]);
+    .controller('HomeCtrl', ['$uibModal', '$scope', '$cookies', 'Room', 'Message', 'Auth', HomeCtrl]);
 })();

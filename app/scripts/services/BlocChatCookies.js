@@ -5,8 +5,9 @@
     if (!currentUser || currentUser === '') {
       console.log('theres no currentuser');
       $uibModal.open({
-        templateUrl: '/templates/new-user-modal.html',
-        controller: 'NewUserModalCtrl',
+        templateUrl: '/templates/login-modal.html',
+        controller: 'AuthModalCtrl',
+        controllerAs: 'auth',
         size: 'sm',
         backdrop: 'static',
         keyboard: false,

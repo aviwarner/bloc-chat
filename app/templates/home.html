@@ -2,7 +2,7 @@
   <div class="row">
     <section class="col-sm-3 roomlist">
       <h1 class="listheader">Bloc Chat</h1>
-      <button class="btn newroom" ng-click="home.openModal()">New Room</button>
+      <button class="btn newroom" ng-click="home.newRoom()">New Room</button>
       <h3 class="roomname" ng-repeat="room in home.rooms.all" ng-click="home.setRoom(room); home.messages.getByRoomId(room.$id)">
           {{ room.roomName }}
       </h3>

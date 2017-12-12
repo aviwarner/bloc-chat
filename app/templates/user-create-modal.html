@@ -2,7 +2,7 @@
   <p>
     Pick a username and password:
   </p>
-  <form ng-submit="createUser(email, password)">
+  <form ng-submit="auth.authService.createUser(email, password)">
     <div class="input-group">
       <input type="text" class="form-control" ng-model="email" placeholder="Email" autofocus required>
       <input type="password" class="form-control" ng-model="password" placeholder="Password" required>

@@ -1,18 +1,18 @@
 <div class="modal-body">
   <p>
-    Login below or <a href="" ng-click="authModal()">sign up for an account</a>.
+    Login below or <a href="" ng-click="auth.userCreate()">sign up for an account</a>.
   </p>
-  <form ng-submit="login(email, password)">
+  <form ng-submit="auth.login(email, password)">
     <div class="input-group">
       <input type="text" class="form-control" ng-model="email" placeholder="Email" autofocus required>
       <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
     </div>
-    <div class="error-message" ng-show="error">
-      {{ error }}
+    <div class="error-message" ng-show="auth.authService.error">
+      {{ auth.authService.error }}
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" type="submit">OK</button>
-      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      <button class="btn btn-warning" type="button" ng-click="auth.cancel()">Cancel</button>
     </div>
   </form>
 </div>

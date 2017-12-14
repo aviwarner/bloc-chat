@@ -8,6 +8,12 @@
       </h3>
       <button class="btn btn-info newroom" ng-click="home.loginModal()">Log-in!</button>
       <button class="btn btn-warning newroom" ng-click="home.signOut()">Log-out</button>
+      <h3>Users</h3>
+      <ul class="username" ng-repeat="user in home.users.all">
+        <li>
+          {{ user.email }}
+        </li>
+      </ul>
     </section>
     <section class="col-sm-9 chatwindow">
       <h2 ng-show="!home.currentRoom"><em>Select a room!!</em></h2>

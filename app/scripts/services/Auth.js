@@ -24,6 +24,8 @@
             console.log("Signed in as: " + firebaseUser.uid);
             currentUser.uid = firebaseUser.uid;
             currentUser.email = email;
+            currentUser.loggedIn = true;
+            User.updateUser('admin', true, firebaseUser.uid);
             $cookies.put('blocChatCurrentUser', currentUser.email);
             return currentUser;
           }).catch(function(error) {

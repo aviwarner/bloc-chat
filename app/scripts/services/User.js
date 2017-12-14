@@ -9,15 +9,25 @@
       users = $firebaseArray(ref.orderByChild("userId").equalTo(userId));
     };
 
-    User.addUser = function(userId, username) {
+    User.addUser = function(userUID, email) {
         // add a new record to 'users' firebase table with username & userUID (to tie to auth table)
-      });
+        var user = {};
+        user.userUID = userUID;
+        user.email = email;
+        user.admin = false;
+        console.log(user);
+        
+        users.$add(user).then(function(ref) {
+          var id = ref.key;
+          users.$indexFor(id);
+        });
     };
 
+    User.currentUser = function() {
+      // currently logged in user
+    }
 
-    };
-
-    return Message;
+    return User;
   }
 
   angular

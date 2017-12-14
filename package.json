@@ -1,7 +1,7 @@
 {
   "name" : "bloc-frontend-project-starter",
   "version" : "0.0.4",
-  "description" : "Starter project for the Bloc Frontend Web Development",
+  "description" : "Project for bloc frontend course",
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/bloc/bloc-frontend-project-starter"

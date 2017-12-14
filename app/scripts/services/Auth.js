@@ -1,5 +1,5 @@
 (function() {
-  function Auth($firebaseAuth, $cookies) {
+  function Auth($firebaseAuth, $cookies, User) {
     var Auth = {};
     var ref = firebase.database().ref().child("users");
     var currentUser = {};
@@ -10,6 +10,7 @@
       Auth.authObj.$createUserWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("User " + firebaseUser.uid + " created successfully!");
+            User.addUser(firebaseUser.uid, email);
             Auth.login(email, password);
           }).catch(function(error) {
             Auth.error = error.message;
@@ -40,5 +41,5 @@
 
   angular
     .module('blocChat')
-    .factory('Auth', ['$firebaseAuth', '$cookies', Auth]);
+    .factory('Auth', ['$firebaseAuth', '$cookies', 'User', Auth]);
 })();

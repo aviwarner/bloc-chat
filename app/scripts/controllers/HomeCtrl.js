@@ -45,9 +45,15 @@
 
     this.signOut = function() {
       Auth.authObj.$signOut();
+      $cookies.remove('blocChatCurrentUser');
+      this.currentUser = null;
       console.log(Auth.authObj.$getAuth());
     }
 
+    // var getCurrentUser = function(currentUser) {
+    //   currentUser = $cookies.get('blocChatCurrentUser');
+    //   return currentUser;
+    // }
   }
 
   angular

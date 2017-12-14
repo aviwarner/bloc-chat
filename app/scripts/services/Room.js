@@ -20,6 +20,7 @@
 
     Room.activeTyping = function(room, currentUser) {
       if (!room.activeTyping) {
+        console.log(currentUser);
         room.activeTyping = true;
         room.typingUser = currentUser;
         rooms.$save(room);

@@ -9,7 +9,7 @@
       <button class="btn btn-info newroom" ng-click="home.loginModal()">Log-in!</button>
       <button class="btn btn-warning newroom" ng-click="home.signOut()">Log-out</button>
       <h3>Users</h3>
-      <ul class="username" ng-repeat="user in home.users.all">
+      <ul class="username" ng-repeat="user in home.users.all" ng-click="home.users.flipAdmin(user)">
         <li>
           {{ user.email }}
         </li>

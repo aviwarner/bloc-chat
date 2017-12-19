@@ -10,11 +10,14 @@
 
     this.login = function(email, password) {
       Auth.login(email, password);
-      setTimeout(function() {
-        if (Auth.error === "") {
-          $uibModalInstance.close('Closed it!')
-        }
-      }, 1000);
+      // setTimeout(function() {
+      //   if (Auth.error === "") {
+      //     $uibModalInstance.close('Closed it!')
+      //   }
+      // }, 1000);
+      $scope.$on('loggedIn', function(){
+        $uibModalInstance.close()
+      });
     }
 
     this.ok = function() {

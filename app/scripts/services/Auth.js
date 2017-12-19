@@ -1,8 +1,8 @@
 (function() {
-  function Auth($firebaseAuth, $cookies, User) {
+  function Auth($rootScope, $firebaseAuth, $firebaseArray, $cookies, User) {
     var Auth = {};
     var ref = firebase.database().ref().child("users");
-    var currentUser = {};
+    // var users = $firebaseArray(ref);
     Auth.error = '';
     Auth.authObj = $firebaseAuth();
 
@@ -10,7 +10,7 @@
       Auth.authObj.$createUserWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("User " + firebaseUser.uid + " created successfully!");
-            User.addUser(firebaseUser.uid, email);
+            User.addUser(email, firebaseUser.uid);
             Auth.login(email, password);
           }).catch(function(error) {
             Auth.error = error.message;
@@ -22,20 +22,13 @@
       Auth.authObj.$signInWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("Signed in as: " + firebaseUser.uid);
-            currentUser.uid = firebaseUser.uid;
-            currentUser.email = email;
-            currentUser.loggedIn = true;
-            User.updateUser('admin', true, firebaseUser.uid);
-            $cookies.put('blocChatCurrentUser', currentUser.email);
-            return currentUser;
+            User.getByUserId(firebaseUser.uid); // doesn't work at all
+            $rootScope.$broadcast('loggedIn', true);
+            $cookies.put('blocChatCurrentUser', email);
           }).catch(function(error) {
             Auth.error = error.message;
             console.log(Auth.error);
           });
-    }
-
-    Auth.logout = function() {
-      console.log('log out attempt');
     }
 
     return Auth;
@@ -43,5 +36,5 @@
 
   angular
     .module('blocChat')
-    .factory('Auth', ['$firebaseAuth', '$cookies', 'User', Auth]);
+    .factory('Auth', ['$rootScope', '$firebaseAuth', '$firebaseArray', '$cookies', 'User', Auth]);
 })();

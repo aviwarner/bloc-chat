@@ -22,7 +22,7 @@
     }
 
     this.activeTyping = function() {
-      Room.activeTyping(this.currentRoom, this.currentUser);
+      Room.activeTyping(this.currentRoom, $cookies.get('blocChatCurrentUser'));
     }
 
     this.newRoom = function() {

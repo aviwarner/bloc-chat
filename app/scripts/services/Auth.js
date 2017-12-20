@@ -17,13 +17,22 @@
           });
     }
 
+    Auth.logout = function() {
+      var firebaseUser = Auth.authObj.$getAuth();
+      $cookies.remove('blocChatCurrentUser');
+      User.onlineStatus(firebaseUser.uid, false);
+      return function(){
+        Auth.authObj.$signOut();
+      };
+    }
+
     Auth.login = function(email, password) {
       Auth.error = '';
       Auth.authObj.$signInWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             console.log("Signed in as: " + firebaseUser.uid);
-            User.getByUserId(firebaseUser.uid); // doesn't work at all
             $rootScope.$broadcast('loggedIn', true);
+            User.onlineStatus(firebaseUser.uid, true);
             $cookies.put('blocChatCurrentUser', email);
           }).catch(function(error) {
             Auth.error = error.message;

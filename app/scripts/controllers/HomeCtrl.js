@@ -2,6 +2,7 @@
   function HomeCtrl($uibModal, $scope, $cookies, Room, Message, Auth, User) {
     this.rooms = Room;
     this.users = User;
+    this.auth = Auth;
     this.currentRoom = null;
     this.currentUser = $cookies.get('blocChatCurrentUser');
 
@@ -45,10 +46,8 @@
     }
 
     this.signOut = function() {
-      Auth.authObj.$signOut();
-      $cookies.remove('blocChatCurrentUser');
+      Auth.logout();
       this.currentUser = null;
-      console.log(Auth.authObj.$getAuth());
     }
 
     // var getCurrentUser = function(currentUser) {

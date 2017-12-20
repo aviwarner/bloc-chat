@@ -9,11 +9,15 @@
       <button class="btn btn-info newroom" ng-click="home.loginModal()">Log-in!</button>
       <button class="btn btn-warning newroom" ng-click="home.signOut()">Log-out</button>
       <h3>Users</h3>
-      <ul class="username" ng-repeat="user in home.users.all" ng-click="home.users.flipAdmin(user)">
-        <li>
-          {{ user.email }}
-        </li>
-      </ul>
+      <p>
+        click user to make an Admin
+      </p>
+      <p class="username" ng-repeat="user in home.users.all" ng-click="home.users.flipAdmin(user)">
+        <span class="glyphicon glyphicon-ok" style="color:green;padding-right:5px;" ng-show="user.online"></span>
+        <span class="glyphicon glyphicon-user" style="color:#d3d3d3;padding-right:5px;" ng-show="!user.online"></span>
+        {{ user.email }}
+        <span class="admin" ng-show="user.admin"> - Admin</span>
+      </p>
     </section>
     <section class="col-sm-9 chatwindow">
       <h2 ng-show="!home.currentRoom"><em>Select a room!!</em></h2>

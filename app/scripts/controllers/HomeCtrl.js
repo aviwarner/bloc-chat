@@ -24,6 +24,9 @@
 
     this.activeTyping = function() {
       Room.activeTyping(this.currentRoom, $cookies.get('blocChatCurrentUser'));
+      if ($cookies.get('blocChatCurrentUser') === undefined) {
+        this.loginModal();
+      }
     }
 
     this.newRoom = function() {

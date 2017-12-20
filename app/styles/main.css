@@ -35,6 +35,7 @@ body {
   height: 100vh;
   background-color: #fafafa;
   padding: 1rem;
+  padding-bottom: 10rem;
   overflow-y: scroll;
 }
 
